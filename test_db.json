@@ -1,0 +1,49 @@
+{
+    "pb_clients": [
+
+        {
+            "telegram_id": 1312336088,
+            "recibe_notificaciones": true,
+            "is_bot": false,
+            "first_name": "Nicolas",
+            "last_name": "Peñaloza",
+            "username": "nicopenaloza",
+            "language_code": "es"
+        },
+        {
+            "telegram_id": 1310025985,
+            "recibe_notificaciones": false,
+            "is_bot": false,
+            "first_name": "Alejandro",
+            "last_name": "Vilar",
+            "username": "alevilar",
+            "language_code": "es"
+        }
+        
+    ],
+    "pb_clients_sites": [
+        {
+            "id": 0,
+            "site_id": 4000,
+            "pb_client_id": 1312336088
+        },
+        {
+            "id": 1,
+            "site_id": 4001,
+            "pb_client_id": 1312336088
+        },
+        {
+            "id": 2,
+            "site_id": 4002,
+            "pb_client_id": 1
+        }
+    ],
+    "pb_pin_sites": [
+        {
+            "id": 0,
+            "pin": 111111111,
+            "site_id": 0
+        }
+    ]
+
+}
