@@ -1,0 +1,14 @@
+{
+    "clientes": [
+        {
+            "usuario": "Nico",
+            "contra": "1234",
+            "telefono": "+541167918525"
+        },
+        {
+            "usuario": "test",
+            "contra": "1234",
+            "telefono": "+541165678525"
+        }
+    ]
+}

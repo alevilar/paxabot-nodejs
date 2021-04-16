@@ -1,0 +1,10 @@
+{
+    "token":"YOUR_TOKEN_BOT_API",
+
+    "database": {
+        "host": "HOST_IP",
+        "user": "HOST_USER",
+        "password": "HOST_PASSWORD",
+        "database": "DATABASE_NAME"
+    }
+}

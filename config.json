@@ -1,11 +1,10 @@
 {
     "token":"1726836454:AAHur6v1VExaIKMXjb9Qv6w7MU5PjJ6MZnU",
 
-    
-    "autoMsg": [
-        {
-            "word": "ping",
-            "res": "pong"
-        }
-    ]
+    "database": {
+        "host": "localhost",
+        "user": "root",
+        "password": "",
+        "database": "paxabot"
+    }
 }
