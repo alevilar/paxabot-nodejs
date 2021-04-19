@@ -15,43 +15,17 @@ mas optima la mensajeria con el cliente via telegram.
 
 ### Ejemplo de uso:
 ```js
-// Modules Import
-const express = require('express');
-const socketIO = require('socket.io');
 const Pbot = require('./bot/index.js'); 
 
-// init Express
-const app = express();
+// Tu codigo
 
+if(algoPasa == true){
+  Pbot.SendMessage({
+    to:1234567890,
+    text:"Hola Mundo"
+  });
+}
 
-// config
- app.set('port', process.env.port || 3000);
-
-
-
-// Config Express
-const server = app.listen( app.get('port'), console.log('Server on port:', app.get('port')) );
-
-
-// Socket IO Config
-const io = socketIO(server);
-
-
-// Set root default message 
-app.use(express.static(path.join(__dirname + '/public/')));
-
-
-// socket events
-io.on('connect', (socket) => {
-
-  console.log('WS: Nuevo usuario', socket.id);
-
-
-    socket.on('pb:sendMessage', (data) => {
-        Pbot.SendMessage(data);
-    });
-    
-});
 ```
 
 
