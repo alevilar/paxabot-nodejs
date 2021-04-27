@@ -12,6 +12,22 @@ mas optima la mensajeria con el cliente via telegram.
 5. Cambiar el nombre del `config-example.json` a `config.json` y reemplazar los datos dentro.
 6. Para reemplazar los datos dentro primero tenes que ir a telegram y enviarle un mensaje a "BotFather" (bot de telegram) y usar el comando /newbot, seguir los pasos que te pida, y una vez finalizado te va a devolver un TOKEN, este token tiene que ir en el archivo config.json. 
 
+```json
+
+{
+    "token":"Aca_va_tu_token_sin_espacios",
+
+    "database": {
+        "host": "IP",
+        "user": "USER",
+        "password": "PASS",
+        "database": "NAME_DB"
+    }
+}
+
+```
+
+
 ## Uso de la libreria
 
 ### Ejemplo de uso:
