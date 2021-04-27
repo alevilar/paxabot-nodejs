@@ -9,7 +9,8 @@ mas optima la mensajeria con el cliente via telegram.
 2. Añadir las dependencias y requerimientos del `package.json` del bot dentro del `package.json` de tu proyecto.
 3. Abrir una terminal en la carpeta del repositorio y ejecutar `npm update`
 4. Hacer referencia a la libreria desde tu codigo. Si usas nodejs seria `const bot = require('index.js_bot_route');`
-5. Cambiar el nombre del `config-example.json` a `config.json` y reemplazar los datos dentro. 
+5. Cambiar el nombre del `config-example.json` a `config.json` y reemplazar los datos dentro.
+6. Para reemplazar los datos dentro primero tenes que ir a telegram y enviarle un mensaje a "BotFather" (bot de telegram) y usar el comando /newbot, seguir los pasos que te pida, y una vez finalizado te va a devolver un TOKEN, este token tiene que ir en el archivo config.json. 
 
 ## Uso de la libreria
 
