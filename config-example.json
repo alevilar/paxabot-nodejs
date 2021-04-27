@@ -1,6 +1,8 @@
 {
+    "descripcion": "Cambiar el nombre de este archivo a config.json y rellenar los datos de abajo para que el bot pueda funcionar",
+    
     "token":"YOUR_TOKEN_BOT_API",
-
+      
     "database": {
         "host": "HOST_IP",
         "user": "HOST_USER",
