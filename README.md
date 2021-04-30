@@ -5,13 +5,13 @@ mas optima la mensajeria con el cliente via telegram.
 
 ## Instalacion
 
-1. Descargar el repositorio y ubicarlo en la carpeta del proyecto.
-2. Añadir las dependencias y requerimientos del `package.json` del bot dentro del `package.json` de tu proyecto.
-3. Abrir una terminal en la carpeta del repositorio y ejecutar `npm update`
-4. Hacer referencia a la libreria desde tu codigo. Si usas nodejs seria `const bot = require('index.js_bot_route');`
-5. Cambiar el nombre del `config-example.json` a `config.json` y reemplazar los datos dentro.
-6. Para reemplazar los datos dentro primero tenes que ir a telegram y enviarle un mensaje a "BotFather" (bot de telegram) y usar el comando /newbot, seguir los pasos que te pida, y una vez finalizado te va a devolver un TOKEN, este token tiene que ir en el archivo config.json. 
-
+1. Ir a la carpeta de tu proyecto.
+2. Abrir una terminal.
+3. Asegurarse de tener node y npm instalados.
+4. utilizar `npm install https://github.com/alevilar/paxabot-nodejs`.
+5. en tu codigo colocar `const telegramBot = require("paxabot-nodejs")`.
+6. a el codigo debajo colocar `telegramBot.init(data)`.
+La data tiene el siguiente formato.
 ```json
 
 {
@@ -33,6 +33,9 @@ mas optima la mensajeria con el cliente via telegram.
 ### Ejemplo de uso:
 ```js
 const Pbot = require('./bot/index.js'); 
+const config = require('./bot/config.json');
+
+Pbot.init(config);
 
 // Tu codigo
 
@@ -47,6 +50,21 @@ if(algoPasa == true){
 
 
 ### Comandos: 
+  `init(json);`
+  *init()* toma como parametros un objeto con los siguientes valores (podes usar una variable):
+   ```js
+    {
+        token:"Aca_va_tu_token_sin_espacios",
+
+        database: {
+            host: "IP",
+            user: "USER",
+            password: "PASS",
+            database: "NAME_DB"
+        }
+    }
+    ```
+
   `SendMessage(json);`
   *SendMessage()* toma como parametros una clase de JS o un JSON con el siguiente formato:
 ```js
