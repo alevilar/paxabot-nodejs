@@ -65,7 +65,7 @@ function init(data) {
                                 if (error) throw error;
 
                                 if (result && result.length == 0) {
-                                    db_pb_bot.query("INSERT INTO pb_clients_sites (site_id, pb_client_telegram_id) VALUES (?, ?)", [res[0].site_id, userData.id], (errorInsert, resultInsert) => {
+                                    db_pb_bot.query("INSERT INTO pb_clients_sites (id, site_id, pb_client_telegram_id) VALUES (UUID(), ?, ?)", [res[0].site_id, userData.id], (errorInsert, resultInsert) => {
                                         if (error) throw error;
 
                                         ctx.reply('👍 Vinculamos tu comercio con éxito!. Cuando tenga algo que contarte lo haré por este medio');
@@ -99,6 +99,9 @@ function init(data) {
         console.log("Falta en tu codigo un bot.init(data)");
     }
 
+    process.once('SIGINT', () => bot.stop('SIGINT'));
+    process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
 }
 
 module.exports = {
@@ -117,10 +120,15 @@ module.exports = {
     },
 
     init: function (data) {
-        init(data);
+
+        try {
+
+            init(data);
+
+        } catch (error) {
+            console.log('Error en el bot: \n', error);
+        }
     }
 
 }
 
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
