@@ -9,7 +9,7 @@ let initialized = false;
 
 function init(data) {
 
-    if (data.token != undefined && data.database != undefined) {
+    if (data.token != undefined && data.database != undefined && data.token.length == 46) {
         db_pb_bot = mySql.createConnection(data.database);
         bot = new Telegraf(data.token);
         initialized = true;
@@ -96,12 +96,11 @@ function init(data) {
         bot.launch();
 
     } else {
-        console.log("Falta en tu codigo un bot.init(data)");
+        console.log("Verifica que este bien cargado el .init(data)");
     }
 
     process.once('SIGINT', () => bot.stop('SIGINT'));
     process.once('SIGTERM', () => bot.stop('SIGTERM'));
-
 }
 
 module.exports = {
@@ -113,8 +112,9 @@ module.exports = {
         }
 
         data.to.forEach(dest => {
-            bot.telegram.sendMessage(dest, data.text);
+            bot.telegram.sendMessage(dest, data.text).catch(err => console.log(`Mensaje a ${data.to} no se pudo enviar \nError: `,err));
         });
+
         if (data.to.length > 0) console.log("Mensaje enviado");
 
     },
