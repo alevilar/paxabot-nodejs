@@ -69,11 +69,8 @@ function init(data) {
             } else {
                 if (message.length == 2) {
                     const pin = message[1];
-                    if (!isNaN(pin)) {
-                        ctx.reply(
-                            "Disculpa, el PIN no es correcto o ya ha caducado"
-                        );
-                    } else {
+                    if ( pin ) {
+                        
                         db_pb_bot.query(
                             "SELECT * FROM pb_pin_sites WHERE pin = ?",
                             [pin],
@@ -149,6 +146,26 @@ module.exports = {
         data.to.forEach((dest) => {
             bot.telegram
                 .sendMessage(dest, data.text)
+                .catch((err) =>
+                    console.log(
+                        `Mensaje a ${data.to} no se pudo enviar \nError: `,
+                        err
+                    )
+                );
+        });
+
+        if (data.to.length > 0) console.log("Mensaje enviado");
+    },
+
+
+    SendFoto: function (data) {
+        if (typeof data.to == "number") {
+            data.to = [data.to];
+        }
+
+        data.to.forEach((dest) => {
+            bot.telegram
+                .sendPhoto(dest, data.text)
                 .catch((err) =>
                     console.log(
                         `Mensaje a ${data.to} no se pudo enviar \nError: `,
