@@ -137,6 +137,27 @@ function init(data) {
     process.once("SIGTERM", () => bot.stop("SIGTERM"));
 }
 
+
+function sendMsg (dest, text) {
+    bot.telegram.sendMessage(dest, text)
+                .catch((err) =>
+                    console.log(
+                        `Mensaje a ${data.to} no se pudo enviar \nError: `,
+                        err
+                    )
+                );
+}
+
+function sendPic (dest, pic, caption) {
+    bot.telegram.sendPhoto(dest, pic, caption)
+                .catch((err) =>
+                    console.log(
+                        `Foto a ${data.to} no se pudo enviar \nError: `,
+                        err
+                    )
+                );
+}
+
 module.exports = {
     SendMessage: function (data) {
         if (typeof data.to == "number") {
@@ -144,38 +165,18 @@ module.exports = {
         }
 
         data.to.forEach((dest) => {
-            bot.telegram
-                .sendMessage(dest, data.text)
-                .catch((err) =>
-                    console.log(
-                        `Mensaje a ${data.to} no se pudo enviar \nError: `,
-                        err
-                    )
-                );
+            if ( data.hasOwnProperty('text')) {
+                sendMsg (dest, data.text)
+            } else if ( data.hasOwnProperty('pic')) {
+                sendPic (dest, data.pic.photo, data.pic.caption)
+            } else {
+                console.error(`no vino parametro ni "text" ni "pic". Error no se que mensaje mandar`);
+            }
         });
 
         if (data.to.length > 0) console.log("Mensaje enviado");
     },
 
-
-    SendFoto: function (data) {
-        if (typeof data.to == "number") {
-            data.to = [data.to];
-        }
-
-        data.to.forEach((dest) => {
-            bot.telegram
-                .sendPhoto(dest, data.text)
-                .catch((err) =>
-                    console.log(
-                        `Mensaje a ${data.to} no se pudo enviar \nError: `,
-                        err
-                    )
-                );
-        });
-
-        if (data.to.length > 0) console.log("Mensaje enviado");
-    },
 
     init: function (data) {
         try {
