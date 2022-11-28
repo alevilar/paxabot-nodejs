@@ -142,8 +142,8 @@ function sendMsg (dest, text) {
     bot.telegram.sendMessage(dest, text)
                 .catch((err) =>
                     console.log(
-                        `Mensaje a ${data.to} no se pudo enviar \nError: `,
-                        err
+                        `Mensaje de TG no se pudo enviar \nError: `,
+                        err, dest
                     )
                 );
 }
